@@ -1,0 +1,1110 @@
+/* Tokens globais: cores, tipografia, largura do conteúdo e medidas compartilhadas. */
+:root {
+    color-scheme: light;
+    --color-ink: #333;
+    --color-muted: #333;
+    --color-brand: #333;
+    --color-brand-hover: #333;
+    --color-accent: #efc050;
+    --color-surface: #ffffff;
+    --color-tint: #f5f5f5;
+    --color-focus: #a34812;
+    --font-body: "Segoe UI", Arial, sans-serif;
+    --content-width: 72rem;
+    --page-gutter: clamp(1.25rem, 5vw, 4rem);
+    --radius-card: 1.25rem;
+    --shadow-header: 0 0.25rem 1.25rem rgb(51 51 51 / 8%);
+}
+
+/* Fonte local para manter a tipografia da marca em qualquer dispositivo. */
+@font-face {
+    font-family: "Cooper Black";
+    src: url("../fonts/COOPBL.woff") format("woff");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+* {
+    /* Inclui bordas e padding no calculo das larguras dos elementos. */
+    box-sizing: border-box;
+}
+
+/* Configura rolagem suave e espaco para titulos nao ficarem sob o cabecalho fixo. */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+body {
+    /* Define a tipografia, cores e ritmo de leitura padrao do site. */
+    margin: 0;
+    color: var(--color-ink);
+    background: var(--color-surface);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    /* Links herdam a cor do contexto, salvo quando um componente define outra. */
+    color: inherit;
+}
+
+/* Destaca controles quando navegados por teclado, sem afetar o clique com mouse. */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 4px;
+}
+
+.container {
+    /* Centraliza o conteudo, limitando a largura e preservando margens fluidas. */
+    width: min(100% - var(--page-gutter) * 2, var(--content-width));
+    margin-inline: auto;
+}
+
+.skip-link {
+    /* Link de acessibilidade oculto ate receber foco pelo teclado. */
+    position: absolute;
+    z-index: 10;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.65rem 1rem;
+    transform: translateY(-160%);
+    border-radius: 0.4rem;
+    color: #fff;
+    background: var(--color-brand);
+}
+
+.skip-link:focus {
+    /* Traz o atalho para a tela quando ele recebe foco. */
+    transform: translateY(0);
+}
+
+/* Cabeçalho, marca e navegação mobile; o menu desktop é redefinido no breakpoint abaixo. */
+.site-header {
+    /* Mantem a barra visivel no topo durante a rolagem. */
+    position: sticky;
+    z-index: 5;
+    top: 0;
+    background: #EFC050;
+    box-shadow: var(--shadow-header);
+}
+
+.header-inner {
+    /* Alinha a marca e os controles do cabecalho em uma linha flexivel. */
+    display: flex;
+    position: relative;
+    min-height: 4.5rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.brand {
+    /* Mantem imagem e texto da marca lado a lado como um link unico. */
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.site-header .brand {
+    /* Remove o espaco entre a imagem e a copia apenas no cabecalho. */
+    gap: 0;
+}
+
+.brand-logo {
+    /* Controla o tamanho responsivo da marca sem distorcer a imagem. */
+    display: block;
+    width: clamp(2.75rem, 8vw, 4rem);
+    height: auto;
+    flex: 0 0 auto;
+    align-self: center;
+    border-radius: 50%;
+}
+
+.brand-copy {
+    /* Empilha o nome da marca e seu subtitulo. */
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.04rem;
+}
+
+.site-header .brand-copy {
+    /* Eleva levemente a copia em relacao ao centro vertical da imagem. */
+    transform: translateY(-0.125rem);
+}
+
+.brand-name {
+    /* Tipografia e tamanho fluido do nome principal da marca. */
+    font-family: "Cooper Black", Georgia, serif;
+    font-size: clamp(1.45475rem, 5.06vw, 1.96075rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.brand-tagline {
+    /* Estilo do subtitulo da marca, mantido em uma unica linha. */
+    color: #333;
+    font-family: "Cooper Black", Georgia, serif;
+    font-size: clamp(0.5566rem, 2.08725vw, 0.8855rem);
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.brand-header-light-preview .brand-name,
+.brand-header-light-preview .brand-tagline {
+    /* Contraste do texto branco e sombra para leitura sobre o fundo amarelo. */
+    color: #fff;
+    text-shadow: 1.5px 1.5px 0 rgb(51 51 51 / 45%);
+}
+
+.menu-toggle {
+    /* Botao hambuger usado para abrir e fechar a navegacao em telas pequenas. */
+    display: inline-flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    border: 1px solid #333;
+    border-radius: 0.65rem;
+    background: transparent;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    /* Cada span forma uma das tres barras do icone do menu. */
+    width: 1.2rem;
+    height: 2px;
+    border-radius: 2px;
+    background: #333;
+}
+
+.site-nav {
+    /* Ancora o menu mobile no lado direito do cabecalho. */
+    position: absolute;
+    top: 100%;
+    right: 0;
+}
+
+.site-nav-list {
+    /* Painel vertical de links exibido pelo menu mobile. */
+    display: flex;
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 0;
+    width: min(19rem, calc(100vw - var(--page-gutter) * 2));
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0.75rem;
+    border: 1px solid rgb(51 51 51 / 25%);
+    border-radius: 0.9rem;
+    background: var(--color-tint);
+    box-shadow: var(--shadow-header);
+    list-style: none;
+}
+
+.site-nav-list[hidden] {
+    /* Respeita o estado oculto controlado pelo HTML e pelo JavaScript. */
+    display: none;
+}
+
+.site-nav-list li + li {
+    /* Separa visualmente cada opcao do menu mobile. */
+    border-top: 1px solid rgb(51 51 51 / 18%);
+}
+
+.site-nav-list a:not(.button) {
+    /* Area clicavel e aparencia dos links comuns do menu. */
+    display: block;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.5rem;
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.site-nav-list a:not(.button):hover {
+    /* Realca o link comum quando o ponteiro passa sobre ele. */
+    background: rgb(51 51 51 / 8%);
+}
+
+/* Estilo base dos botões e variações de cor por contexto. */
+.button {
+    /* Base comum para links e botoes com aparencia de acao. */
+    display: inline-flex;
+    min-height: 2.9rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.2rem;
+    border: 2px solid var(--color-brand);
+    border-radius: 999px;
+    color: #fff;
+    background: var(--color-brand);
+    font-weight: 400;
+    font-family: inherit;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+    cursor: pointer;
+}
+
+.button-nav,
+.contact-actions .button {
+    /* Destaca as principais acoes de agendamento e WhatsApp. */
+    font-weight: 700;
+}
+
+.button:hover {
+    /* Feedback de interacao para botoes habilitados. */
+    transform: translateY(-1px);
+    border-color: var(--color-brand-hover);
+    background: var(--color-brand-hover);
+}
+
+.button-light {
+    /* Variante clara usada no agendamento do menu. */
+    border-color: #fff;
+    color: #333;
+    background: #fff;
+}
+
+.button-light:hover {
+    /* Estado hover da variante clara, com fundo levemente acinzentado. */
+    border-color: #f7f7f7;
+    color: #333;
+    background: #f7f7f7;
+}
+
+.button-accent {
+    /* Variante amarela para chamadas de acao sobre fundo claro. */
+    border-color: #EFC050;
+    color: #333;
+    background: #EFC050;
+}
+
+.button-accent:hover {
+    /* Mantem a cor amarela no hover para conservar o padrao visual. */
+    border-color: #EFC050;
+    color: #333;
+    background: #EFC050;
+}
+
+.button-nav {
+    /* Botao de agendamento em largura total no menu mobile. */
+    width: 100%;
+    margin-top: 0.35rem;
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+}
+
+.button-nav:hover {
+    /* Mantem o botao do menu amarelo ao passar o ponteiro. */
+    border-color: var(--color-accent);
+    color: #333;
+    background: var(--color-accent);
+}
+
+.button:disabled {
+    /* Indica que o botao ainda nao pode ser acionado. */
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.button:disabled:hover {
+    /* Evita animacao de elevacao em botoes desabilitados. */
+    transform: none;
+}
+
+.section {
+    /* Espacamento vertical padrao das secoes, escalado conforme a tela. */
+    padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+/* Seção inicial: texto fluido e forma decorativa posicionada fora do fluxo. */
+.hero {
+    /* Area inicial com conteudo centralizado e decoracao recortada nos limites. */
+    position: relative;
+    overflow: hidden;
+    min-height: 30rem;
+    display: grid;
+    align-items: center;
+    background: var(--color-tint);
+    padding-block: clamp(2rem, 4.5vw, 3.5rem);
+}
+
+.hero-content {
+    /* Mantem o conteudo acima da forma decorativa posicionada no fundo. */
+    position: relative;
+    z-index: 1;
+    padding-block: 1.75rem;
+}
+
+.hero-content > * {
+    /* Controla a largura maxima de titulo, texto e acao da Home. */
+    max-width: 64.5rem;
+}
+
+.eyebrow {
+    /* Rotulo pequeno em caixa alta usado para identificar sub-secoes. */
+    margin: 0 0 0.75rem;
+    color: var(--color-brand);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+    /* Remove a margem superior padrao para controlar o espaco pelos componentes. */
+    margin-top: 0;
+}
+
+h1,
+h2 {
+    /* Regras compartilhadas pelos titulos principais e de secao. */
+    color: var(--color-ink);
+    line-height: 1.15;
+    text-wrap: balance;
+}
+
+h1 {
+    /* Titulo principal, com escala fluida e espacamento compacto. */
+    margin-bottom: 1.25rem;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    letter-spacing: -0.045em;
+}
+
+h2 {
+    /* Titulo de secao, menor que o titulo principal. */
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.035em;
+}
+
+.hero-description {
+    /* Texto introdutorio da Home, usando toda a largura permitida pelo conteiner. */
+    max-width: none;
+    margin-bottom: 1.75rem;
+    color: var(--color-muted);
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+}
+
+.hero-description p {
+    /* Separa os paragrafos da apresentacao inicial. */
+    margin-bottom: 1rem;
+}
+
+.hero-description p:last-child {
+    /* Remove o espaco extra apos o ultimo paragrafo da Home. */
+    margin-bottom: 0;
+}
+
+.hero-shape {
+    /* Circulo decorativo parcialmente fora da Home, sem capturar cliques. */
+    position: absolute;
+    right: -7rem;
+    bottom: -12rem;
+    width: min(38rem, 76vw);
+    aspect-ratio: 1;
+    border: 2.5rem solid rgb(239 192 80 / 28%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.section-light {
+    /* Fundo branco para secoes que precisam contrastar com o cinza claro. */
+    background: var(--color-surface);
+}
+
+/* Sobre: no mobile, texto, formação e foto ficam em sequência vertical. */
+.about-section {
+    /* Recorta elementos decorativos e define espacamento proprio da secao Sobre. */
+    overflow: hidden;
+    padding-top: clamp(3.2rem, 7.2vw, 5.6rem);
+    padding-bottom: clamp(2rem, 6vw, 4rem);
+}
+
+.about-layout {
+    /* Grade mobile em coluna: apresentacao, formacao e retrato. */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "copy"
+        "education"
+        "visual";
+}
+
+.about-copy {
+    /* Coluna com biografia e pilares profissionais. */
+    grid-area: copy;
+    max-width: 52rem;
+    padding-top: clamp(0rem, 3vw, 2rem);
+}
+
+.about-education {
+    /* Bloco de formacao; sua posicao muda para uma linha propria no desktop. */
+    grid-area: education;
+    margin-top: 2.75rem;
+    padding-bottom: 0;
+}
+
+.about-education .eyebrow {
+    /* Ajusta o espaco sob o rotulo da formacao. */
+    margin-bottom: 1rem;
+}
+
+.about-education p {
+    /* Controla a distancia entre subtitulos e grupos de cursos. */
+    margin-bottom: 0.6rem;
+}
+
+.about-education ul {
+    /* Lista de cursos com separacao consistente e recuo de marcadores. */
+    display: grid;
+    gap: 0.6rem;
+    margin: 0 0 1.25rem;
+    padding-left: 1.25rem;
+}
+
+.about-education li strong {
+    /* No mobile, destaca o curso em uma linha acima dos detalhes. */
+    display: block;
+}
+
+.about-education li strong::after {
+    /* Nao adiciona separador artificial entre curso e detalhes no mobile. */
+    content: none;
+}
+
+.about-visual {
+    /* Quadro responsivo do retrato; a proporcao original evita cortes. */
+    grid-area: visual;
+    /* Mantém o quadro na proporção original para evitar cortes em diferentes zooms. */
+    position: relative;
+    width: min(calc(97.24% + max(var(--page-gutter), (100vw - var(--content-width)) / 2)), 29.172rem);
+    height: auto;
+    aspect-ratio: 1256 / 1536;
+    justify-self: start;
+    align-self: end;
+    max-width: none;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    left: calc(50vw - var(--page-gutter));
+    transform: translateX(-50%);
+}
+
+.about-photo {
+    /* Imagem ocupa o quadro mantendo a altura proporcional. */
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    transform: none;
+}
+
+/* Fundo e decoração da seção de atendimento; a imagem não interfere no texto. */
+.section-tint {
+    /* Fundo cinza claro para secoes alternadas. */
+    background: var(--color-tint);
+}
+
+.appointment-section {
+    /* Limita a decoracao do infinito a area da secao e aumenta o respiro inferior. */
+    position: relative;
+    overflow: hidden;
+    padding-bottom: clamp(6rem, 13.5vw, 10.5rem);
+}
+
+.appointment-section .narrow-content {
+    /* Mantem os textos de atendimento acima da imagem decorativa. */
+    position: relative;
+    z-index: 1;
+}
+
+.appointment-decoration {
+    /* Logo decorativa ao fundo, sem interferir na leitura ou nos cliques. */
+    position: absolute;
+    z-index: 0;
+    left: -3rem;
+    bottom: -1.5rem;
+    width: min(38.4rem, 73.6vw);
+    height: auto;
+    opacity: 0.28;
+    pointer-events: none;
+}
+
+#contato {
+    /* Mantem a secao de contato branca, apesar do estilo de fundo geral. */
+    background: var(--color-surface);
+}
+
+/* Contato: introdução, colunas responsivas, links e ícones em SVG. */
+.narrow-content {
+    /* Limita a largura de secoes com texto mais estreito, como Atendimento. */
+    max-width: 52rem;
+}
+
+.contact-content {
+    /* Conteiner de contato, um pouco mais largo para acomodar as duas colunas. */
+    max-width: 58rem;
+}
+
+.contact-intro {
+    /* Texto inicial de contato; largura limitada para facilitar a leitura. */
+    max-width: 42rem;
+    margin-bottom: 2rem;
+    color: var(--color-muted);
+    font-size: 1.08rem;
+}
+
+.contact-columns {
+    /* Empilha publicos e dados de contato no mobile. */
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-audience {
+    /* Bloco com os motivos de consulta e encaminhamento. */
+    order: 0;
+}
+
+.contact-audience ul {
+    /* Lista de publicos com espaco entre os itens. */
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.contact-details {
+    /* Lista de horarios, telefone e redes sociais, com icones. */
+    order: 1;
+    display: grid;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-detail.contact-detail-whatsapp {
+    /* O numero do WhatsApp fica oculto no mobile e aparece no desktop. */
+    display: none;
+}
+
+.contact-detail {
+    /* Dispoe o icone de contorno ao lado do rotulo e valor. */
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.contact-detail-icon {
+    /* Tamanho e traco compartilhados pelos icones SVG de contato. */
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.6;
+}
+
+.contact-detail > div {
+    /* Empilha rotulo e valor sem espaco adicional entre eles. */
+    display: grid;
+    gap: 0;
+}
+
+.contact-detail-label {
+    /* Evita que o estilo de rotulo receba margem inferior extra. */
+    margin: 0;
+}
+
+.contact-detail a {
+    /* Aparencia dos links de telefone e redes sociais no bloco. */
+    color: inherit;
+    text-underline-offset: 0.15em;
+}
+
+.contact-actions {
+    /* Mantem a acao WhatsApp separada das duas colunas informativas. */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+}
+
+/* Formulário: espaçamento comum dos campos e estados de foco visíveis. */
+.contact-email-title {
+    /* Cabecalho curto que apresenta a alternativa de contato por e-mail. */
+    margin: 0 0 0.25rem;
+    color: var(--color-ink);
+    font-size: 0.9rem;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+}
+
+.contact-form {
+    /* Cartao do formulario: grade de campos, recuo e fundo diferenciado. */
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid #dedede;
+    border-radius: var(--radius-card);
+    background: var(--color-tint);
+}
+
+.form-field textarea::placeholder {
+    /* Cor do texto de exemplo na caixa de mensagem. */
+    color: #888;
+    opacity: 1;
+}
+
+.form-field {
+    /* Empilha o rotulo e o controle de cada campo. */
+    display: grid;
+    gap: 0.4rem;
+}
+
+.form-field label {
+    /* Rotulos do formulario, em peso normal para leitura mais leve. */
+    color: var(--color-ink);
+    font-weight: 400;
+}
+
+.form-field input,
+.form-field textarea {
+    /* Estilo comum dos campos de texto e da caixa de mensagem. */
+    width: 100%;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid #777;
+    border-radius: 0.5rem;
+    color: var(--color-ink);
+    background: #fff;
+    font: inherit;
+}
+
+.form-field textarea {
+    /* Altura minima da mensagem e redimensionamento apenas vertical. */
+    min-height: 9rem;
+    resize: vertical;
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+    /* Indica claramente qual campo esta ativo na navegacao por teclado. */
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.contact-submit {
+    /* Mantem o envio alinhado ao inicio da grade e em altura compacta. */
+    min-height: 2.5rem;
+    justify-self: start;
+    padding: 0.6rem 1rem;
+}
+
+.form-status {
+    /* Reserva espaco para mensagens de validacao sem deslocar o formulario. */
+    min-height: 1.5em;
+    margin: 0;
+    color: var(--color-muted);
+}
+
+/* Atalho fixo para WhatsApp, afastado das bordas seguras do dispositivo. */
+.whatsapp-float {
+    /* Ação fixa; env() mantém o botão afastado das áreas seguras do celular. */
+    display: grid;
+    position: fixed;
+    z-index: 4;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    width: 3.75rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    background: #eb68b7;
+    box-shadow: 0 0.25rem 0.9rem rgb(51 51 51 / 25%);
+    transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.whatsapp-float:hover {
+    /* Feedback discreto ao passar o ponteiro sobre o atalho flutuante. */
+    transform: translateY(-2px) scale(1.04);
+}
+
+.whatsapp-float svg {
+    /* Define o tamanho do desenho SVG dentro do botao circular. */
+    display: block;
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: currentColor;
+}
+
+.narrow-content > p:last-child,
+.appointment-panel p:last-child {
+    /* Remove margem final e uniformiza texto de encerramento desses blocos. */
+    margin-bottom: 0;
+    color: var(--color-muted);
+    font-size: 1.08rem;
+}
+
+/* Bloco auxiliar de chamada para atendimento. */
+.appointment-panel {
+    /* Cartao de chamada para atendimento em coluna no mobile. */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+    padding: clamp(1.5rem, 5vw, 3rem);
+    border-radius: var(--radius-card);
+    background: var(--color-tint);
+}
+
+.appointment-panel > div {
+    /* Limita o texto dentro do cartao de chamada. */
+    max-width: 42rem;
+}
+
+.site-footer {
+    /* Fundo escuro e espacamento externo do rodape. */
+    padding-block: 2.5rem;
+    color: #fff;
+    background: #333;
+}
+
+/* Rodapé mobile: marca acima de navegação/contato e crédito ao final. */
+.footer-inner {
+    /* Grade vertical do rodape mobile. */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+}
+
+.footer-brand-block {
+    /* Posiciona a marca do rodape junto ao inicio do bloco. */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-columns {
+    /* No mobile, navegação e contato ficam lado a lado sob a marca. */
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(255 255 255 / 25%);
+}
+
+.brand-footer {
+    /* Cor principal da marca sobre o fundo escuro do rodape. */
+    color: #EFC050;
+}
+
+.brand-footer .brand-tagline {
+    /* Mantem o subtitulo amarelo no rodape. */
+    color: #EFC050;
+}
+
+.footer-copyright {
+    /* Faixa final: empilha copyright e credito no mobile. */
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(255 255 255 / 25%);
+    font-size: 0.9rem;
+}
+
+.footer-copyright p {
+    /* Remove as margens padrao dos dois textos da faixa final. */
+    margin: 0;
+}
+
+.footer-credit {
+    /* Assinatura de producao com logo alinhada ao texto. */
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.4rem;
+    margin-left: 0;
+}
+
+.footer-credit img {
+    /* Ajusta a altura da logo para equivaler a altura do texto do credito. */
+    display: block;
+    width: auto;
+    height: 1em;
+}
+
+.footer-heading {
+    /* Titulos das colunas de navegacao e contato do rodape. */
+    margin: 0 0 1rem;
+    color: #EFC050;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+}
+
+.footer-link-list {
+    /* Remove marcadores e organiza os links do rodape verticalmente. */
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-link-list a {
+    /* Links do rodape sem sublinhado permanente. */
+    text-decoration: none;
+}
+
+.footer-link-list a:hover {
+    /* Sublinha e colore o link quando o ponteiro esta sobre ele. */
+    color: #EFC050;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.footer-hours {
+    /* Horarios do rodape separados por uma linha sutil. */
+    width: min(100%, 9rem);
+    margin: 1rem 0 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgb(255 255 255 / 25%);
+    font-size: clamp(0.8rem, 4vw, 0.9rem);
+}
+
+.footer-contact {
+    /* Evita que enderecos longos estourem a coluna de contato. */
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Em telas largas, troca a navegação para linha e organiza os blocos em colunas. */
+@media (min-width: 52rem) {
+    /* As regras seguintes mudam a composicao para telas desktop. */
+    .contact-columns {
+        /* Divide a area de contato em 70% para publico e 30% para contatos. */
+        grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+        align-items: start;
+        gap: clamp(2rem, 5vw, 4rem);
+    }
+
+    .contact-details {
+        /* Alinha o bloco menor de contatos junto a margem direita. */
+        width: min(100%, 18rem);
+        justify-self: end;
+    }
+
+    .contact-detail.contact-detail-whatsapp {
+        /* Mostra o item de telefone no layout desktop. */
+        display: flex;
+    }
+
+    .about-layout {
+        /* Texto e retrato lado a lado; formacao ocupa a linha abaixo. */
+        min-height: 34rem;
+        grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.85fr);
+        grid-template-areas:
+            "copy visual"
+            "education education";
+        align-items: stretch;
+        column-gap: clamp(2rem, 6vw, 5rem);
+        row-gap: 0;
+    }
+
+    .about-copy {
+        /* Centraliza a coluna de biografia e adiciona respiro vertical. */
+        align-self: center;
+        padding-block: 3rem;
+    }
+
+    .about-visual {
+        /* No desktop, limita a foto à coluna e alinha seu topo ao título profissional. */
+        width: min(30rem, 100%);
+        height: auto;
+        max-width: none;
+        align-self: start;
+        justify-self: end;
+        margin-top: 5.07rem;
+        margin-right: 0;
+        margin-bottom: 0;
+        left: auto;
+        transform: none;
+    }
+
+    .about-photo {
+        /* Remove qualquer escala mobile da imagem em telas desktop. */
+        transform: none;
+    }
+
+    .about-education {
+        /* Aproxima a formacao da linha superior no layout desktop. */
+        margin-top: 0.5rem;
+        padding-bottom: 0;
+    }
+
+    .about-education li strong {
+        /* Coloca curso e instituicao na mesma linha no desktop. */
+        display: inline;
+    }
+
+    .about-education li strong::after {
+        /* Separa visualmente o nome do curso dos detalhes institucionais. */
+        content: " — ";
+    }
+
+    .header-inner {
+        /* Aumenta a altura do cabecalho para o menu horizontal. */
+        min-height: 5rem;
+    }
+
+    .menu-toggle {
+        /* O menu hamburguer nao e necessario quando a navegacao cabe na linha. */
+        display: none;
+    }
+
+    .site-nav-list,
+    .site-nav-list[hidden] {
+        /* Transforma o painel mobile numa lista horizontal sem caixa flutuante. */
+        display: flex;
+        position: static;
+        width: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+        padding: 0.25rem 0.45rem;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .site-nav {
+        /* Devolve a navegacao ao fluxo normal do cabecalho. */
+        position: relative;
+        top: auto;
+        right: auto;
+    }
+
+    .site-nav-list li + li {
+        /* Troca divisores horizontais do mobile por divisores verticais. */
+        border-top: 0;
+        border-left: 1px solid rgb(51 51 51 / 30%);
+    }
+
+    .site-nav-list a:not(.button) {
+        /* Ajusta o espacamento de cada link para a navegacao horizontal. */
+        padding: 0.6rem clamp(0.4rem, 1vw, 0.7rem);
+        border-radius: 0;
+    }
+
+    .button-nav {
+        /* Redimensiona o agendamento para caber ao lado dos links desktop. */
+        width: auto;
+        margin: 0 0 0 0.5rem;
+        border-color: #fff;
+        background: #fff;
+    }
+
+    .button-nav:hover {
+        /* Estado hover do agendamento no cabecalho desktop. */
+        border-color: #f7f7f7;
+        background: #f7f7f7;
+    }
+
+    .site-nav-list li:last-child {
+        /* Separa a acao de agendamento dos links comuns. */
+        padding-left: 0.5rem;
+        border-left: 1px solid rgb(51 51 51 / 30%);
+    }
+
+    .appointment-panel {
+        /* Alinha texto e acao do cartao em uma linha no desktop. */
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer-inner {
+        /* Distribui marca, navegacao e contato em tres colunas no desktop. */
+        grid-template-columns: minmax(0, 1fr) minmax(9rem, 0.6fr) minmax(14rem, 0.9fr);
+        column-gap: clamp(2rem, 5vw, 5rem);
+        row-gap: 2rem;
+    }
+
+    .footer-copyright {
+        /* Coloca copyright e credito lado a lado no desktop. */
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem 1rem;
+    }
+
+    .footer-credit {
+        /* Encosta o credito ao lado direito da faixa no desktop. */
+        align-self: center;
+        margin-left: auto;
+    }
+
+    .footer-columns {
+        /* Libera os blocos para ocuparem as três colunas do grid do rodapé. */
+        display: contents;
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    .footer-hours {
+        /* Amplia o separador de horarios no layout desktop. */
+        width: 100%;
+        max-width: 12rem;
+        margin-top: 0.75rem;
+        padding-top: 1rem;
+        font-size: 1rem;
+    }
+
+    .footer-contact {
+        /* Mantem os contatos alinhados a direita, sem divisor lateral. */
+        width: min(100%, 18rem);
+        justify-self: end;
+        padding-left: 0;
+        border-left: 0;
+    }
+}
+
+/* Reduz animações quando o sistema operacional solicita menos movimento. */
+@media (prefers-reduced-motion: reduce) {
+    /* Diminui animacoes para pessoas que ativaram essa preferencia no sistema. */
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

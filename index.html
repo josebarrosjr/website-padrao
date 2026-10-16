@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Metadados de idioma, responsividade e identidade visual da página. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
+    <meta name="theme-color" content="#EFC050">
+    <title>Lorem Ipsum</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <!-- Atalho de teclado para ir direto ao conteúdo principal. -->
+    <a class="skip-link" href="#conteudo">Lorem Ipsum</a>
+
+    <!-- Cabeçalho fixo com marca e navegação responsiva. -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <!-- A marca também funciona como link de retorno ao início. -->
+            <a class="brand brand-header-light-preview" href="#home" aria-label="Lorem Ipsum">
+                <img class="brand-logo" src="assets/images/placeholder.svg" alt="">
+                <span class="brand-copy">
+                    <span class="brand-name">LOREM IPSUM</span>
+                    <span class="brand-tagline">Lorem ipsum dolor sit amet</span>
+                </span>
+            </a>
+
+            <!-- Controle acessível que abre e fecha a navegação em telas pequenas. -->
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-controls="primary-navigation"
+                aria-expanded="false"
+                aria-label="Lorem Ipsum"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navegação para as seções principais da página. -->
+            <nav class="site-nav" aria-label="Lorem Ipsum">
+                <ul class="site-nav-list" id="primary-navigation">
+                    <li><a href="#home">Lorem Ipsum</a></li>
+                    <li><a href="#sobre">Lorem Ipsum</a></li>
+                    <li><a href="#atendimento">Lorem Ipsum</a></li>
+                    <li><a href="#contato">Lorem Ipsum</a></li>
+                    <li>
+                        <a class="button button-light button-nav">Lorem Ipsum</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="conteudo">
+        <!-- Apresentação principal do site. -->
+        <section class="hero section" id="home" aria-labelledby="hero-title">
+            <div class="container hero-content">
+                <h1 id="hero-title">Lorem ipsum dolor sit amet</h1>
+                <div class="hero-description">
+                    <p>
+                        Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>.
+                        <strong>Sed do eiusmod tempor incididunt</strong> <strong>ut labore et dolore</strong> magna aliqua.
+                        <strong>Ut enim ad minim veniam</strong>, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat.
+                    </p>
+                    <p>
+                        <strong>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur.</strong>
+                    </p>
+                    <p>
+                        <strong>Excepteur sint occaecat cupidatat non proident</strong>, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+
+                </div>
+                <a class="button" href="#atendimento">Lorem Ipsum</a>
+            </div>
+            <div class="hero-shape" aria-hidden="true"></div>
+        </section>
+
+        <!-- Conteúdo institucional, lista e imagem de perfil. -->
+        <section class="section section-light about-section" id="sobre" aria-labelledby="sobre-title">
+            <div class="container about-layout">
+                <!-- Texto introdutório e lista de destaques. -->
+                <div class="about-copy">
+                    <p class="eyebrow">Lorem Ipsum</p>
+                    <h2 id="sobre-title">Lorem Ipsum</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. <strong>Ut enim ad minim veniam</strong>, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet:</p>
+                    <ul class="about-pillars">
+                        <li>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit;
+                        </li>
+                        <li>
+                            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua; <em>Lorem Ipsum</em>
+                        </li>
+                        <li>
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris;
+                        </li>
+                        <li>
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Imagem de perfil de exemplo com dimensões para preservar a proporção. -->
+                <div class="about-visual">
+                    <!-- As dimensões intrínsecas preservam a proporção da imagem de exemplo. -->
+                    <img
+                        class="about-photo"
+                        src="assets/images/placeholder.svg"
+                        alt="Lorem Ipsum"
+                        width="1256"
+                        height="1536"
+                        loading="lazy"
+                    >
+                </div>
+                <!-- Formação em bloco próprio abaixo do texto e do retrato. -->
+                <div class="about-education">
+                    <p class="eyebrow">Lorem Ipsum</p>
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <ul>
+                        <li>
+                            <strong>Lorem ipsum dolor sit amet</strong> — Lorem ipsum dolor sit amet
+                        </li>
+                        <li>
+                            <strong>Lorem ipsum dolor sit amet</strong> — Lorem ipsum dolor sit amet
+                        </li>
+                        <li>
+                            <strong>Lorem ipsum dolor sit amet</strong> — Lorem ipsum dolor sit amet - <strong>Lorem Ipsum</strong>
+                        </li>
+                        <li>
+                            <strong>Lorem ipsum dolor sit amet</strong> — Lorem ipsum dolor sit amet - <strong>Lorem Ipsum</strong>
+                        </li>
+                    </ul>
+                    <p>Lorem ipsum dolor sit amet</p>
+                    <ul>
+                        <li>
+                            <strong>Lorem ipsum dolor sit amet</strong> — Lorem ipsum dolor sit amet
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de conteúdo com imagem decorativa. -->
+        <section class="section section-tint appointment-section" id="atendimento" aria-labelledby="atendimento-title">
+            <img class="appointment-decoration" src="assets/images/placeholder.svg" alt="" aria-hidden="true" loading="lazy">
+            <div class="container narrow-content">
+                <h2 id="atendimento-title">Lorem Ipsum</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    <em>Lorem Ipsum</em>
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum.
+                </p>
+            </div>
+        </section>
+
+        <!-- Canais de contato de exemplo e formulário validado no navegador. -->
+        <section class="section section-tint" id="contato" aria-labelledby="contato-title">
+            <div class="container contact-content">
+                <h2 id="contato-title">Lorem Ipsum</h2>
+                <p class="contact-intro">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="contact-columns">
+                    <section class="contact-audience" aria-label="Lorem Ipsum">
+                        <ul>
+                            <li>
+                                <strong>Lorem ipsum dolor sit amet</strong>
+                                - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </li>
+                            <li>
+                                <strong>Lorem ipsum dolor sit amet</strong>
+                                - Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </li>
+                            <li>
+                                <strong>Lorem ipsum dolor sit amet</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </li>
+                        </ul>
+                    </section>
+                    <ul class="contact-details" aria-label="Lorem Ipsum">
+                        <li class="contact-detail">
+                            <svg class="contact-detail-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M12 7v5l3 2"></path>
+                            </svg>
+                            <div>
+                                <span class="eyebrow contact-detail-label">Lorem Ipsum</span>
+                                <span>Lorem ipsum</span>
+                            </div>
+                        </li>
+                        <li class="contact-detail contact-detail-whatsapp">
+                            <svg class="contact-detail-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M7.2 3.5h3l1.4 4.2-2 1.6a14.8 14.8 0 0 0 5.1 5.1l1.6-2 4.2 1.4v3c0 1.1-.9 2-2 2A15.5 15.5 0 0 1 5.2 5.5c0-1.1.9-2 2-2Z"></path>
+                            </svg>
+                            <div>
+                                <span class="eyebrow contact-detail-label">Lorem Ipsum</span>
+                                <a>Lorem Ipsum</a>
+                            </div>
+                        </li>
+                        <li class="contact-detail">
+                            <svg class="contact-detail-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <path d="M17.5 6.5h.01"></path>
+                            </svg>
+                            <div>
+                                <span class="eyebrow contact-detail-label">Lorem Ipsum</span>
+                                <a>Lorem Ipsum</a>
+                            </div>
+                        </li>
+                        <li class="contact-detail">
+                            <svg class="contact-detail-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                                <path d="M7.5 10v7m0-10v.01M11 17v-4a2.5 2.5 0 0 1 5 0v4m-5-4v4"></path>
+                            </svg>
+                            <div>
+                                <span class="eyebrow contact-detail-label">Lorem Ipsum</span>
+                                <a>Lorem Ipsum</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact-actions">
+                    <a class="button button-accent">Lorem Ipsum</a>
+                </div>
+
+                <!-- O JavaScript valida os campos; a demonstração não envia nem armazena dados. -->
+                <form class="contact-form" id="contact-form">
+                    <h3 class="contact-email-title">Lorem Ipsum</h3>
+                    <div class="form-field">
+                        <label for="contact-name">Lorem Ipsum</label>
+                        <input id="contact-name" name="name" type="text" autocomplete="name" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="contact-email">Lorem Ipsum</label>
+                        <input id="contact-email" name="email" type="email" autocomplete="email" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="contact-message">Lorem Ipsum</label>
+                        <textarea
+                            id="contact-message"
+                            name="message"
+                            rows="6"
+                            minlength="10"
+                            maxlength="500"
+                            placeholder="Lorem ipsum dolor sit amet"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button class="button button-accent contact-submit" type="submit" disabled>Lorem Ipsum</button>
+                    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botão flutuante de exemplo com ícone SVG. -->
+    <a
+        class="whatsapp-float"
+        aria-label="Lorem Ipsum"
+        title="Lorem Ipsum"
+    >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.1 3.9A11.35 11.35 0 0 0 12.02.55C5.72.55.59 5.68.59 11.98c0 2.01.53 3.97 1.53 5.7L.5 23.45l5.91-1.55a11.4 11.4 0 0 0 5.6 1.43h.01c6.3 0 11.43-5.13 11.43-11.43 0-3.05-1.19-5.92-3.35-8Zm-8.08 17.5h-.01a9.48 9.48 0 0 1-4.83-1.32l-.35-.21-3.51.92.94-3.42-.23-.36a9.45 9.45 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.7c0 5.22-4.25 9.47-9.47 9.47Zm5.2-7.1c-.28-.14-1.65-.82-1.9-.91-.25-.1-.44-.14-.63.14-.19.28-.72.91-.88 1.1-.16.18-.33.21-.61.07-.28-.14-1.18-.44-2.25-1.4-.83-.73-1.4-1.64-1.57-1.92-.16-.28-.02-.43.13-.57.12-.13.28-.33.42-.49.14-.16.19-.28.28-.47.1-.19.05-.35-.02-.49-.07-.14-.63-1.52-.86-2.08-.23-.55-.46-.48-.63-.49h-.54c-.19 0-.49.07-.75.35-.26.28-.98.96-.98 2.33s1 2.7 1.14 2.89c.14.19 1.97 3.01 4.77 4.22.67.29 1.2.47 1.61.6.68.21 1.29.18 1.78.11.54-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.54-.33Z"/>
+        </svg>
+    </a>
+
+    <!-- Rodapé com marca, navegação e direitos autorais. -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <!-- Marca do rodapé retorna ao início. -->
+            <div class="footer-brand-block">
+                <a class="brand brand-footer" href="#home" aria-label="Lorem Ipsum">
+                    <img class="brand-logo" src="assets/images/placeholder.svg" alt="">
+                    <span class="brand-copy">
+                        <span class="brand-name">LOREM IPSUM</span>
+                        <span class="brand-tagline">Lorem ipsum dolor sit amet</span>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Atalhos de navegação e informações de exemplo. -->
+            <div class="footer-columns">
+                <nav class="footer-navigation" aria-label="Lorem Ipsum">
+                    <h2 class="footer-heading">Lorem Ipsum</h2>
+                    <ul class="footer-link-list">
+                        <li><a href="#home">Lorem Ipsum</a></li>
+                        <li><a href="#sobre">Lorem Ipsum</a></li>
+                        <li><a href="#atendimento">Lorem Ipsum</a></li>
+                        <li><a href="#contato">Lorem Ipsum</a></li>
+                    </ul>
+                </nav>
+
+                <section class="footer-contact" aria-labelledby="footer-contact-title">
+                    <h2 class="footer-heading" id="footer-contact-title">Lorem Ipsum</h2>
+                    <ul class="footer-link-list">
+                        <li><a>Lorem Ipsum</a></li>
+                        <li><a>Lorem Ipsum</a></li>
+                        <li><a>Lorem Ipsum</a></li>
+                        <li><a>Lorem Ipsum</a></li>
+                    </ul>
+                    <p class="footer-hours">Lorem ipsum dolor sit amet</p>
+                </section>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; <span id="current-year">2026</span> Lorem Ipsum. Lorem ipsum dolor sit amet.</p>
+                <p class="footer-credit">
+                    Site criado por
+                    <a href="https://github.com/josebarrosjr" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Jose Barros Jr no GitHub">
+                        <img src="assets/images/logo-dev.png" alt="">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
